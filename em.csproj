@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Assets\EMonitor.ico" />
     <None Remove="Assets\Himprom_logo1.png" />
   </ItemGroup>
 
@@ -20,6 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Assets\EMonitor.ico" />
     <Resource Include="Assets\Himprom_logo1.png" />
   </ItemGroup>
 

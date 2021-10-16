@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using em.ViewModel.MainMenu;
+using em.Views;
 using MaterialDesignThemes.Wpf;
 
 namespace em
@@ -114,7 +115,7 @@ namespace em
                         break;
 
                     case "About":
-                        //new About().ShowDialog();
+                        new About().ShowDialog();
                         break;
                 }
 
