@@ -5,11 +5,16 @@
     <TargetFramework>net6.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
+    <ApplicationIcon>EMonitor.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
     <None Remove="Assets\EMonitor.ico" />
     <None Remove="Assets\Himprom_logo1.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="EMonitor.ico" />
   </ItemGroup>
 
   <ItemGroup>
