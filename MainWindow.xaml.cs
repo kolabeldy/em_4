@@ -61,6 +61,7 @@ namespace em
 
             var menuSettings = new List<SubItem>();
             menuSettings.Add(new SubItem("Авторизация"));
+            menuSettings.Add(new SubItem("Настройки", screen: null, idFunc: "SettingShow"));
             menuSettings.Add(new SubItem("О программе", screen: null, idFunc: "About"));
 
             var item6 = new ItemMenu("Настройки", menuSettings, PackIconKind.Settings);
@@ -113,7 +114,9 @@ namespace em
                         break;
                     case "SynchronizeDB":
                         break;
-
+                    case "SettingShow":
+                        new Setting().ShowDialog();
+                        break;
                     case "About":
                         new About().ShowDialog();
                         break;
