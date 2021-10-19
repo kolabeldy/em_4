@@ -1,0 +1,107 @@
+﻿<UserControl x:Class="em.FilterPartials.FilterEnergyResources"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+             TextElement.FontWeight="Regular"
+             TextElement.FontSize="13"
+             TextOptions.TextFormattingMode="Ideal"
+             TextOptions.TextRenderingMode="Auto"
+             Background="{DynamicResource MaterialDesignPaper}"
+             FontFamily="{DynamicResource MaterialDesignFont}"
+             mc:Ignorable="d" 
+             d:DesignHeight="160" d:DesignWidth="560">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+            <materialDesign:BooleanToVisibilityConverter x:Key="InvertedBooleanToVisibilityConverter" TrueValue="Collapsed" FalseValue="Visible" />
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <GroupBox Width="460"
+              Header="Энергоресурсы"
+              Margin="15,8,15,8"   
+              Padding="15,5">
+            <Grid Margin="0,0,0,10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="10"/>
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                
+                <StackPanel HorizontalAlignment="Stretch"
+                            Grid.Column="0">
+                    <Grid >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="10"/>
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                    <Button Name="MainClear"
+                            Padding="0"
+                            Height="22"
+                            Style="{StaticResource MaterialDesignFlatButton}"
+                            HorizontalAlignment="Right"
+                            ToolTip="Очистить"
+                            Grid.Column="1"
+                            Click="MainClear_Click">
+                        <materialDesign:PackIcon
+                            Kind="Close"
+                            Height="20"
+                            Width="20"/>
+                    </Button>
+                    </Grid>
+                    <ComboBox x:Name="MainComboBox"
+                                    Style="{StaticResource MaterialDesignFilledComboBox}"
+                                    SelectedIndex="0"
+                                    materialDesign:HintAssist.Hint="первичные" 
+                                    SelectionChanged="MainComboBox_SelectionChanged">
+                        <ComboBoxItem Content="все" />
+                        <ComboBoxItem Content="ЦЗ-16" />
+                        <ComboBoxItem Content="ЦЗ-23" />
+                        <ComboBoxItem Content="ЦЗ-56" />
+                        <ComboBoxItem Content="ЦЗ-70" />
+                        <ComboBoxItem Content="ЦЗ-71" />
+                        <ComboBoxItem Content="ЦЗ-110" />
+                        <ComboBoxItem Content="ЦЗ-501" />
+                    </ComboBox>
+                </StackPanel>
+                <StackPanel HorizontalAlignment="Stretch"
+                            Grid.Column="2">
+                    <Grid >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="10"/>
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                    <Button Name="OtherClear"
+                            Padding="0"
+                            Height="22"
+                            Style="{StaticResource MaterialDesignFlatButton}"
+                            HorizontalAlignment="Right"
+                            ToolTip="Очистить"
+                            Grid.Column="1"
+                            Click="OtherClear_Click">
+                        <materialDesign:PackIcon
+                            Kind="Close"
+                            Height="20"
+                            Width="20"/>
+                    </Button>
+                </Grid>
+                    <ComboBox x:Name="OtherComboBox"
+                              Style="{StaticResource MaterialDesignFilledComboBox}"
+                              SelectedIndex="0"
+                              materialDesign:HintAssist.Hint="вторичные" 
+                              SelectionChanged="OtherComboBox_SelectionChanged">
+                        <ComboBoxItem Content="все" />
+                        <ComboBoxItem Content="ЦЗ-16" />
+                        <ComboBoxItem Content="ЦЗ-23" />
+                        <ComboBoxItem Content="ЦЗ-56" />
+                        <ComboBoxItem Content="ЦЗ-70" />
+                        <ComboBoxItem Content="ЦЗ-71" />
+                        <ComboBoxItem Content="ЦЗ-110" />
+                        <ComboBoxItem Content="ЦЗ-501" />
+                    </ComboBox>
+                </StackPanel>
+            </Grid>
+    </GroupBox>
+</UserControl>

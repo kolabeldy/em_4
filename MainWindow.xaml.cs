@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using em.FilterPartials;
 using em.ViewModel.MainMenu;
 using em.Views;
 using MaterialDesignThemes.Wpf;
@@ -23,9 +24,14 @@ namespace em
     /// </summary>
     public partial class MainWindow : Window
     {
+        public MonitorMonthFilterPanel FilterPanelContent { get; set; }
         public MainWindow()
         {
             InitializeComponent();
+            DataContext = this;
+
+            FilterPanelContent = new MonitorMonthFilterPanel();
+
             var menuMonitoring = new List<SubItem>();
             menuMonitoring.Add(new SubItem("Инфопанель", screen: null, idFunc: "DashboardShow"));
             menuMonitoring.Add(new SubItem("Месячные отчёты"));
@@ -134,5 +140,18 @@ namespace em
             }
         }
 
+        private bool isClosePress = false;
+        private void PopupBox_Closed(object sender, RoutedEventArgs e)
+        {
+            if(!isClosePress)
+                FilterPopup.IsPopupOpen = true;
+        }
+
+        private void PopupCloseButton_Click(object sender, RoutedEventArgs e)
+        {
+            isClosePress = true;
+            FilterPopup.IsPopupOpen = false;
+            isClosePress = false;
+        }
     }
 }
