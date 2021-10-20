@@ -32,9 +32,8 @@
                 
                     <ComboBox x:Name="MainComboBox"
                               Style="{StaticResource MaterialDesignFilledComboBox}"
-                              SelectedIndex="0"
-                              materialDesign:HintAssist.Hint="тип нормирования" 
-                              SelectionChanged="MainComboBox_SelectionChanged">
+                              SelectedIndex="{Binding MainComboBoxSelectedIndex, Mode=TwoWay}"
+                              materialDesign:HintAssist.Hint="тип нормирования" >
                         <ComboBoxItem Content="все" />
                         <ComboBoxItem Content="нормируемые" />
                         <ComboBoxItem Content="лимитируемые" />
