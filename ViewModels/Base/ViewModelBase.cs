@@ -1,11 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using em.Commands.Base;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows;
 
 namespace em.ViewModels.Base
 {
-    public abstract class ViewModel : INotifyPropertyChanged
+    public abstract class ViewModelBase : Command, INotifyPropertyChanged
     {
         public static bool IsDesignMode { get; } = System.ComponentModel.DesignerProperties.GetIsInDesignMode(new DependencyObject());
 

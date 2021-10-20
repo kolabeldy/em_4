@@ -50,7 +50,8 @@
                             HorizontalAlignment="Right"
                             ToolTip="Очистить"
                             Grid.Column="1"
-                            Click="MainClear_Click">
+                            Command="{Binding ComboBoxClear_Command}"
+                            CommandParameter="{Binding ElementName=MainComboBox}">
                         <materialDesign:PackIcon
                             Kind="Close"
                             Height="20"
@@ -59,9 +60,8 @@
                 </Grid>
                     <ComboBox x:Name="MainComboBox"
                                     Style="{StaticResource MaterialDesignFilledComboBox}"
-                                    SelectedIndex="0"
-                                    materialDesign:HintAssist.Hint="технологические основные" 
-                                    SelectionChanged="MainComboBox_SelectionChanged">
+                                    SelectedIndex="{Binding MainComboBoxSelectedIndex, Mode=TwoWay}"
+                                    materialDesign:HintAssist.Hint="технологические основные" >
                         <ComboBoxItem Content="все" />
                         <ComboBoxItem Content="ЦЗ-16" />
                         <ComboBoxItem Content="ЦЗ-23" />
@@ -87,7 +87,8 @@
                             HorizontalAlignment="Right"
                             ToolTip="Очистить"
                             Grid.Column="1"
-                            Click="OtherClear_Click">
+                            Command="{Binding ComboBoxClear_Command}"
+                            CommandParameter="{Binding ElementName=OtherComboBox}">
                         <materialDesign:PackIcon
                             Kind="Close"
                             Height="20"
@@ -96,9 +97,8 @@
                 </Grid>
                     <ComboBox x:Name="OtherComboBox"
                               Style="{StaticResource MaterialDesignFilledComboBox}"
-                              SelectedIndex="0"
-                              materialDesign:HintAssist.Hint="технологические прочие" 
-                              SelectionChanged="OtherComboBox_SelectionChanged">
+                              SelectedIndex="{Binding OtherComboBoxSelectedIndex, Mode=TwoWay}"
+                              materialDesign:HintAssist.Hint="технологические прочие" >
                         <ComboBoxItem Content="все" />
                         <ComboBoxItem Content="ЦЗ-16" />
                         <ComboBoxItem Content="ЦЗ-23" />
@@ -124,7 +124,8 @@
                             HorizontalAlignment="Right"
                             ToolTip="Очистить"
                             Grid.Column="1"
-                            Click="SlaveClear_Click">
+                            Command="{Binding ComboBoxClear_Command}"
+                            CommandParameter="{Binding ElementName=SlaveComboBox}">
                         <materialDesign:PackIcon
                             Kind="Close"
                             Height="20"
@@ -133,9 +134,8 @@
                 </Grid>
                     <ComboBox x:Name="SlaveComboBox"
                               Style="{StaticResource MaterialDesignFilledComboBox}"
-                              SelectedIndex="0"
-                              materialDesign:HintAssist.Hint="вспомогательные" 
-                              SelectionChanged="SlaveComboBox_SelectionChanged">
+                              SelectedIndex="{Binding SlaveComboBoxSelectedIndex, Mode=TwoWay}"
+                              materialDesign:HintAssist.Hint="вспомогательные" >
                         <ComboBoxItem Content="все" />
                         <ComboBoxItem Content="ЦЗ-16" />
                         <ComboBoxItem Content="ЦЗ-23" />

@@ -12,7 +12,7 @@
              Background="{DynamicResource MaterialDesignPaper}"
              FontFamily="{DynamicResource MaterialDesignFont}"
              mc:Ignorable="d" 
-             d:DesignHeight="160" d:DesignWidth="560">
+             d:DesignHeight="130" d:DesignWidth="560">
     <UserControl.Resources>
         <ResourceDictionary>
             <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
@@ -44,7 +44,8 @@
                             HorizontalAlignment="Right"
                             ToolTip="Очистить"
                             Grid.Column="1"
-                            Click="MainClear_Click">
+                            Command="{Binding ComboBoxClear_Command}"
+                            CommandParameter="{Binding ElementName=MainComboBox}">
                         <materialDesign:PackIcon
                             Kind="Close"
                             Height="20"
@@ -53,9 +54,8 @@
                     </Grid>
                     <ComboBox x:Name="MainComboBox"
                                     Style="{StaticResource MaterialDesignFilledComboBox}"
-                                    SelectedIndex="0"
                                     materialDesign:HintAssist.Hint="первичные" 
-                                    SelectionChanged="MainComboBox_SelectionChanged">
+                                    SelectedIndex="{Binding MainComboBoxSelectedIndex, Mode=TwoWay}">
                         <ComboBoxItem Content="все" />
                         <ComboBoxItem Content="ЦЗ-16" />
                         <ComboBoxItem Content="ЦЗ-23" />
@@ -80,7 +80,8 @@
                             HorizontalAlignment="Right"
                             ToolTip="Очистить"
                             Grid.Column="1"
-                            Click="OtherClear_Click">
+                            Command="{Binding ComboBoxClear_Command}"
+                            CommandParameter="{Binding ElementName=OtherComboBox}">
                         <materialDesign:PackIcon
                             Kind="Close"
                             Height="20"
@@ -89,9 +90,8 @@
                 </Grid>
                     <ComboBox x:Name="OtherComboBox"
                               Style="{StaticResource MaterialDesignFilledComboBox}"
-                              SelectedIndex="0"
-                              materialDesign:HintAssist.Hint="вторичные" 
-                              SelectionChanged="OtherComboBox_SelectionChanged">
+                              SelectedIndex="{Binding OtherComboBoxSelectedIndex, Mode=TwoWay}"
+                              materialDesign:HintAssist.Hint="вторичные" >
                         <ComboBoxItem Content="все" />
                         <ComboBoxItem Content="ЦЗ-16" />
                         <ComboBoxItem Content="ЦЗ-23" />

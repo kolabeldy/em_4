@@ -2,11 +2,10 @@
 
 namespace em.ViewModels
 {
-    public class MainWindowViewModel : TittledViewModel
+    public class MainWindowViewModel
     {
         public MainWindowViewModel()
         {
-            Tittle = "Главное окно";
         }
     }
 }

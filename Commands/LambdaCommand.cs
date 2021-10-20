@@ -110,7 +110,7 @@ namespace em.Commands
         /// <param name="parameter">Параметр процесса выполнения команды</param>
         /// <returns>Истина, если команда может быть выполнена</returns>
         public override bool CanExecute(object? parameter) =>
-            ViewModels.Base.ViewModel.IsDesignMode
+            ViewModels.Base.ViewModelBase.IsDesignMode
             || IsCanExecute && (_CanExecute?.Invoke(parameter) ?? true);
 
         /// <summary>Проверка возможности выполнения команды</summary>
@@ -192,7 +192,7 @@ namespace em.Commands
         public LambdaCommand(Action<T?> ExecuteAction, Func<T?, bool>? CanExecute = null)
         {
             _ExecuteAction = ExecuteAction ?? throw new ArgumentNullException(nameof(ExecuteAction));
-            _CanExecute = ViewModels.Base.ViewModel.IsDesignMode ? (_ => true) : CanExecute;
+            _CanExecute = ViewModels.Base.ViewModelBase.IsDesignMode ? (_ => true) : CanExecute;
         }
 
         #endregion
@@ -248,7 +248,7 @@ namespace em.Commands
 
         public override bool CanExecute(object? obj)
         {
-            if (ViewModels.Base.ViewModel.IsDesignMode) return true;
+            if (ViewModels.Base.ViewModelBase.IsDesignMode) return true;
             if (!IsCanExecute) return false;
             return _CanExecute is not { } can_execute || obj switch
             {

@@ -136,7 +136,7 @@ namespace em.Commands.Base
 
         #endregion
 
-        public virtual bool CanExecute(object? parameter) => ViewModels.Base.ViewModel.IsDesignMode || _IsCanExecute;
+        public virtual bool CanExecute(object? parameter) => ViewModels.Base.ViewModelBase.IsDesignMode || _IsCanExecute;
 
         public abstract void Execute(object? parameter);
 

@@ -1,6 +1,6 @@
 ﻿namespace em.ViewModels.Base
 {
-    public abstract class TittledViewModel : ViewModel
+    public abstract class TittledViewModel : ViewModelBase
     {
         #region Tittle : string - Заголовок
 
