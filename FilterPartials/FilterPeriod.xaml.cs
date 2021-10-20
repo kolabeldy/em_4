@@ -7,9 +7,11 @@ namespace em.FilterPartials
 {
     public partial class FilterPeriod : UserControl
     {
+        private FilterPeriodViewModel viewModel = new FilterPeriodViewModel();
         public FilterPeriod()
         {
             InitializeComponent();
+            DataContext = viewModel;
         }
         private void StartPeriodPicker_Opened(object sender, RoutedEventArgs e)
         {
@@ -33,7 +35,9 @@ namespace em.FilterPartials
             Calendar calendar = (Calendar)sender;
             if (calendar.DisplayMode == CalendarMode.Month)
             {
+                DateTime d = calendar.DisplayDate;
                 calendar.SelectedDate = calendar.DisplayDate;
+                calendar.DisplayDate = new DateTime(d.Year, d.Month, 1);
                 StartPeriodPicker.IsDropDownOpen = false;
             }
         }
