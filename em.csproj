@@ -38,4 +38,15 @@
     <Resource Include="Assets\Himprom_logo1.png" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Page Update="Views\DayMonitor.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\LossesMonitor.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+
 </Project>

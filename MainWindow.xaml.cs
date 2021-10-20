@@ -1,27 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using em.FilterPartials;
+using em.Vievs;
 using em.ViewModel.MainMenu;
 using em.Views;
 using MaterialDesignThemes.Wpf;
 
 namespace em
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
         public MonitorMonthFilterPanel FilterPanelContent { get; set; }
@@ -34,9 +21,9 @@ namespace em
 
             var menuMonitoring = new List<SubItem>();
             menuMonitoring.Add(new SubItem("Инфопанель", screen: null, idFunc: "DashboardShow"));
-            menuMonitoring.Add(new SubItem("Месячные отчёты"));
-            menuMonitoring.Add(new SubItem("Суточные данные"));
-            menuMonitoring.Add(new SubItem("Потери энергоресурсов"));
+            menuMonitoring.Add(new SubItem("Месячные отчёты", MonthMonitor.GetInstance()));
+            menuMonitoring.Add(new SubItem("Суточные данные", DayMonitor.GetInstance()));
+            menuMonitoring.Add(new SubItem("Потери энергоресурсов", LossesMonitor.GetInstance()));
             var item1 = new ItemMenu("Мониторинг", menuMonitoring, PackIconKind.MonitorDashboard);
 
             var menuImportToDB = new List<SubItem>();
@@ -136,6 +123,7 @@ namespace em
                 {
                     StackPanelMain.Children.Clear();
                     StackPanelMain.Children.Add(screen);
+                    string sName = screen.ToString();
                 }
             }
         }
