@@ -3,9 +3,9 @@ using em.ViewModels.Base;
 using System.Windows.Controls;
 using System.Windows.Input;
 
-namespace em.FilterPartials
+namespace em.Filter.Partials
 {
-    internal class FilterNormTypesViewModel : ViewModelBase
+    internal class FilterEnergyResourcesViewModel: ViewModelBase
     {
         private int _MainComboBoxSelectedIndex = 0;
         public int MainComboBoxSelectedIndex 
@@ -14,6 +14,17 @@ namespace em.FilterPartials
             set
             {
                 Set(ref _MainComboBoxSelectedIndex, value);
+                if (value > 0) OtherComboBoxSelectedIndex = -1;
+            }
+        }
+        private int _OtherComboBoxSelectedIndex = 0;
+        public int OtherComboBoxSelectedIndex
+        {
+            get => _OtherComboBoxSelectedIndex;
+            set
+            {
+                Set(ref _OtherComboBoxSelectedIndex, value);
+                if(value > 0) MainComboBoxSelectedIndex = -1;
             }
         }
 
@@ -27,7 +38,7 @@ namespace em.FilterPartials
             par.SelectedIndex = -1;
         }
 
-        public FilterNormTypesViewModel()
+        public FilterEnergyResourcesViewModel()
         {
             ComboBoxClear_Command = new LambdaCommand(Execute, CanExecute);
         }

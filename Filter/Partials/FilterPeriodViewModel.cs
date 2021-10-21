@@ -1,7 +1,7 @@
 ﻿using em.ViewModels.Base;
 using System;
 
-namespace em.FilterPartials
+namespace em.Filter.Partials
 {
     internal class FilterPeriodViewModel: ViewModelBase
     {

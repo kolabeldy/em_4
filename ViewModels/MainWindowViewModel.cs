@@ -1,18 +1,21 @@
-﻿using em.FilterPartials;
-using em.Vievs;
+﻿using em.Vievs;
 using em.ViewModel.MainMenu;
 using em.ViewModels.Base;
 using em.Views;
 using System.Collections.Generic;
 using MaterialDesignThemes.Wpf;
 using System.Windows.Controls;
+using em.Filter;
+using System.Windows.Input;
+using em.Commands;
 
 namespace em.ViewModels
 {
-    public class MainWindowViewModel:ViewModelBase
+    public class MainWindowViewModel : ViewModelBase
     {
-        
-        public override void Execute(object? parameter) { }
+        private IFilterPanelViewModel filterPanelViewModel;
+        private IFrameViewModel frameModel;
+
 
         private IMainFrameContent _MainFrameContent;
         public IMainFrameContent MainFrameContent
@@ -24,8 +27,8 @@ namespace em.ViewModels
             }
         }
 
-        private MonitorMonthFilterPanel _FilterPanelContent;
-        public MonitorMonthFilterPanel FilterPanelContent
+        private IFilterPanelContent _FilterPanelContent;
+        public IFilterPanelContent FilterPanelContent
         {
             get => _FilterPanelContent;
             set
@@ -43,17 +46,45 @@ namespace em.ViewModels
             }
         }
 
+
         private StackPanel _MyMainMenu;
-        public StackPanel MyMainMenu
+        public StackPanel MyMainMenu { get => _MyMainMenu; set => Set(ref _MyMainMenu, value); }
+
+        private bool _IsFilterPopupOpen = false;
+        public bool IsFilterPopupOpen
         {
-            get => _MyMainMenu;
+            get => _IsFilterPopupOpen;
             set
             {
-                Set(ref _MyMainMenu, value);
+                if (IsClosePress)
+                    Set(ref _IsFilterPopupOpen, value);
+                else Set(ref _IsFilterPopupOpen, true);
             }
         }
 
+        private bool _IsClosePress = false;
+        public bool IsClosePress { get => _IsClosePress; set => Set(ref _IsClosePress, value); }
+
+
+        public ICommand FilterPanelClose_Command { get; }
+        public override bool CanExecute(object? parameter) => true;
+        public override void Execute(object? parameter) { FilterPanelClose(); }
+        private void FilterPanelClose()
+        {
+            IsClosePress = true;
+            IsFilterPopupOpen = false;
+            IsClosePress = false;
+            filterPanelViewModel.NewFilterData = "------New Filter Data------";
+            frameModel.NewFilterData = filterPanelViewModel.NewFilterData;
+        }
+
         public MainWindowViewModel()
+        {
+            FilterPanelClose_Command = new LambdaCommand(Execute, CanExecute);
+            MainMenuInit();
+        }
+
+        private void MainMenuInit()
         {
             MyMainMenu = new StackPanel();
             var menuMonitoring = new List<SubItem>();
@@ -104,7 +135,6 @@ namespace em.ViewModels
             MyMainMenu.Children.Add(new UserControlMenuItem(item5, this));
             MyMainMenu.Children.Add(new UserControlMenuItem(item6, this));
         }
-
         internal void SwitchScreen(object sender, string idFunc = null)
         {
             bool rez;
@@ -115,12 +145,14 @@ namespace em.ViewModels
                     case "DashboardShow":
                         break;
                     case "MonitorMonth":
-                        var panel = MonitorMonthFilterPanelViewModel.GetInstance();
+                        filterPanelViewModel = MonitorMonthFilterPanelViewModel.GetInstance();
                         FilterPanelContent = null;
-                        FilterPanelContent = MonitorMonthFilterPanel.GetInstance(panel);
+                        FilterPanelContent = MonitorMonthFilterPanel.GetInstance((MonitorMonthFilterPanelViewModel)filterPanelViewModel);
                         IsFilterEnabled = true;
                         MainFrameContent = null;
-                        MainFrameContent = new MonthMonitor(new MonthMonitorViewModel());
+                        frameModel = MonthMonitorViewModel.GetInstance();
+                        frameModel.NewFilterData = filterPanelViewModel.NewFilterData;
+                        MainFrameContent = MonthMonitor.GetInstance((MonthMonitorViewModel)frameModel);
                         break;
                     case "MonitorDay":
                         //var panel = MonitorMonthFilterPanelViewModel.GetInstance();

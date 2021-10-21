@@ -11,20 +11,5 @@ namespace em
             InitializeComponent();
             DataContext = model;
         }
-
-
-        private bool isClosePress = false;
-        private void PopupBox_Closed(object sender, RoutedEventArgs e)
-        {
-            if (!isClosePress)
-                FilterPopup.IsPopupOpen = true;
-        }
-
-        private void PopupCloseButton_Click(object sender, RoutedEventArgs e)
-        {
-            isClosePress = true;
-            FilterPopup.IsPopupOpen = false;
-            isClosePress = false;
-        }
     }
 }

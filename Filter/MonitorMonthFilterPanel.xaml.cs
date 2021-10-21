@@ -1,6 +1,6 @@
 ﻿using System.Windows.Controls;
 
-namespace em.FilterPartials
+namespace em.Filter
 {
     public partial class MonitorMonthFilterPanel : UserControl, IFilterPanelContent
     {

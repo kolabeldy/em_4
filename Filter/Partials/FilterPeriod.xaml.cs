@@ -3,7 +3,7 @@ using System;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 
-namespace em.FilterPartials
+namespace em.Filter.Partials
 {
     public partial class FilterPeriod : UserControl
     {

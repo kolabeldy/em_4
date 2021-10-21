@@ -3,7 +3,7 @@ using em.ViewModels.Base;
 using System.Windows.Controls;
 using System.Windows.Input;
 
-namespace em.FilterPartials
+namespace em.Filter.Partials
 {
     internal class FilterCostCentersViewModel : ViewModelBase
     {

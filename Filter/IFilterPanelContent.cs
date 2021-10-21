@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace em.FilterPartials
+namespace em.Filter
 {
-    internal interface IFilterPanelContent
+    public interface IFilterPanelContent
     {
     }
 }

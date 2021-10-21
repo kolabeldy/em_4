@@ -2,19 +2,26 @@
 
 namespace em.ViewModels
 {
-    internal class MonthMonitorViewModel: ViewModelBase
+    public class MonthMonitorViewModel: ViewModelBase, IFrameViewModel
     {
         public override void Execute(object? parameter) { }
 
-        private string _Param = "MonthMonitor";
-        public string Param
+
+        private static MonthMonitorViewModel instance;
+        public static MonthMonitorViewModel GetInstance()
         {
-            get => _Param;
-            set
-            {
-                Set(ref _Param, value);
-            }
+            if (instance == null)
+                instance = new MonthMonitorViewModel();
+            return instance;
         }
+
+        private string _NewFilterData = "Data";
+        public string NewFilterData { get => _NewFilterData; set => Set(ref _NewFilterData, value); }
+        private MonthMonitorViewModel()
+        {
+        }
+
+
 
     }
 }

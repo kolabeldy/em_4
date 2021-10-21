@@ -1,6 +1,6 @@
 ﻿using System.Windows.Controls;
 
-namespace em.FilterPartials
+namespace em.Filter.Partials
 {
     public partial class FilterCostCenters : UserControl
     {
