@@ -15,7 +15,7 @@ namespace em.ViewModels
         public override void Execute(object? parameter) { }
 
         private IMainFrameContent _MainFrameContent;
-        internal IMainFrameContent MainFrameContent
+        public IMainFrameContent MainFrameContent
         {
             get => _MainFrameContent;
             set
@@ -59,7 +59,7 @@ namespace em.ViewModels
             var menuMonitoring = new List<SubItem>();
             menuMonitoring.Add(new SubItem("Инфопанель", screen: null, idFunc: "DashboardShow"));
             menuMonitoring.Add(new SubItem("Месячные отчёты", null, idFunc: "MonitorMonth"));
-            menuMonitoring.Add(new SubItem("Суточные данные", DayMonitor.GetInstance()));
+            menuMonitoring.Add(new SubItem("Суточные данные", null, idFunc: "MonitorDay"));
             menuMonitoring.Add(new SubItem("Потери энергоресурсов", LossesMonitor.GetInstance()));
             var item1 = new ItemMenu("Мониторинг", menuMonitoring, PackIconKind.MonitorDashboard);
 
@@ -121,6 +121,16 @@ namespace em.ViewModels
                         IsFilterEnabled = true;
                         MainFrameContent = null;
                         MainFrameContent = new MonthMonitor(new MonthMonitorViewModel());
+                        break;
+                    case "MonitorDay":
+                        //var panel = MonitorMonthFilterPanelViewModel.GetInstance();
+                        //FilterPanelContent = null;
+                        //FilterPanelContent = MonitorMonthFilterPanel.GetInstance(panel);
+                        IsFilterEnabled = false;
+                        MainFrameContent = null;
+                        MainFrameContent = DayMonitor.GetInstance();
+                        break;
+
                         break;
                     case "ReportMonthShow":
                         break;

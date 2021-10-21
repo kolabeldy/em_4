@@ -1,12 +1,4 @@
-﻿using em.Models;
-using System.Collections.Generic;
-using System.Linq;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Media;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
-using System.Data;
+﻿using System.Windows.Controls;
 using em.ViewModels;
 using em.Views;
 
@@ -14,6 +6,7 @@ namespace em.Vievs
 {
     public partial class MonthMonitor : UserControl, IMainFrameContent
     {
+        public int ParamInt = 5;
         internal MonthMonitor(MonthMonitorViewModel model)
         {
             DataContext = model;

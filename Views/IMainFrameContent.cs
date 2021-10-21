@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace em.Views
 {
-    internal interface IMainFrameContent
+    public interface IMainFrameContent
     {
     }
 }
