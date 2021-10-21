@@ -8,10 +8,11 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Data;
 using em.ViewModels;
+using em.Views;
 
 namespace em.Vievs
 {
-    public partial class MonthMonitor : UserControl
+    public partial class MonthMonitor : UserControl, IMainFrameContent
     {
         internal MonthMonitor(MonthMonitorViewModel model)
         {

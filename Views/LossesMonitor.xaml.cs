@@ -7,10 +7,11 @@ using System.Windows.Media;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Data;
+using em.Views;
 
 namespace em.Vievs
 {
-    public partial class LossesMonitor : UserControl
+    public partial class LossesMonitor : UserControl, IMainFrameContent
     {
         private static LossesMonitor instance;
         public static LossesMonitor GetInstance()

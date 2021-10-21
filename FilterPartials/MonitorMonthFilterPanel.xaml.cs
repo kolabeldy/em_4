@@ -2,7 +2,7 @@
 
 namespace em.FilterPartials
 {
-    public partial class MonitorMonthFilterPanel : UserControl
+    public partial class MonitorMonthFilterPanel : UserControl, IFilterPanelContent
     {
         private static MonitorMonthFilterPanel instance;
         internal static MonitorMonthFilterPanel GetInstance(MonitorMonthFilterPanelViewModel model)

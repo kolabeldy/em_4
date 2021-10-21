@@ -76,7 +76,7 @@
                                 <RowDefinition  Height="50"/>
                             </Grid.RowDefinitions>
                             <StackPanel Grid.Row="0">
-                                    <UserControl x:Name="FilterPanel"  />
+                                    <UserControl x:Name="FilterPanel"  Content="{Binding FilterPanelContent}"/>
                             </StackPanel>
                                 <Button Name="PopupCloseButton" Grid.Row="1" Content="Close" Click="PopupCloseButton_Click" />
                             </Grid>
@@ -86,9 +86,14 @@
             </Grid>
             <ScrollViewer 
                 HorizontalAlignment="Stretch" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" Grid.Row="1">
-                <StackPanel x:Name="Menu" Margin="10"/>
+                <UserControl x:Name="StackPanelMenu" Margin="10" Content="{Binding MyMainMenu}" />
             </ScrollViewer>
         </Grid>
-        <UserControl x:Name="StackPanelMain" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+        <UserControl x:Name="MainFrame" 
+                     Grid.Row="1" 
+                     Grid.Column="1" 
+                     HorizontalAlignment="Stretch" 
+                     VerticalAlignment="Stretch"
+                     Content="{Binding MainFrameContent}"/>
     </Grid>
 </Window>

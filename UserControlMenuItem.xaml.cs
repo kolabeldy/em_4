@@ -1,5 +1,6 @@
 ﻿using em.ViewModel;
 using em.ViewModel.MainMenu;
+using em.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,8 +23,8 @@ namespace em
     /// </summary>
     public partial class UserControlMenuItem : UserControl
     {
-        MainWindow _context;
-        public UserControlMenuItem(ItemMenu itemMenu, MainWindow context)
+        MainWindowViewModel _context;
+        public UserControlMenuItem(ItemMenu itemMenu, MainWindowViewModel context)
         {
             InitializeComponent();
 
