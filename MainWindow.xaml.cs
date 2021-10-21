@@ -12,7 +12,7 @@ namespace em
 {
     public partial class MainWindow : Window
     {
-        MainWindowViewModel model = new MainWindowViewModel();
+        public MainWindowViewModel model = new MainWindowViewModel();
         public MainWindow()
         {
             InitializeComponent();
@@ -81,6 +81,7 @@ namespace em
                         FilterPanel.Content = null;
                         FilterPanel.Content = MonitorMonthFilterPanel.GetInstance(panel);
                         model.IsFilterEnabled = true;
+                        //StackPanelMain.Content = new MonthMonitor(new MonthMonitorViewModel(panel));
                         panel.PanelShow();
                         break;
                     case "ReportMonthShow":
