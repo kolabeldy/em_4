@@ -63,31 +63,20 @@
                 <Border Grid.Column="1" BorderBrush="{StaticResource PrimaryHueLightBrush}" BorderThickness="0,0,1,1">
                 <StackPanel Orientation="Horizontal"
                             VerticalAlignment="Stretch">
-                    <!--<Button Name="MainClear"
-                            Padding="0"
-                            Height="40"
-                            Style="{StaticResource MaterialDesignFlatButton}"
-                            HorizontalAlignment="Right"
-                            ToolTip="Фильтр">
-                        <materialDesign:PackIcon
-                            Kind="FilterOutline"
-                            Height="30"
-                            Width="30"/>
-                    </Button>-->
                     <materialDesign:PopupBox Name="FilterPopup"
                                              StaysOpen="True"
                                              PlacementMode="RightAndAlignTopEdges"
                                              HorizontalAlignment="Center"
                                              VerticalAlignment="Center"
                                              Foreground="WhiteSmoke"
-                                             IsEnabled="True" Closed="PopupBox_Closed">
+                                             IsEnabled="{Binding IsFilterEnabled}" Closed="PopupBox_Closed">
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition />
                                 <RowDefinition  Height="50"/>
                             </Grid.RowDefinitions>
                             <StackPanel Grid.Row="0">
-                                    <UserControl Content="{Binding FilterPanelContent}" />
+                                    <UserControl x:Name="FilterPanel"  />
                             </StackPanel>
                                 <Button Name="PopupCloseButton" Grid.Row="1" Content="Close" Click="PopupCloseButton_Click" />
                             </Grid>
@@ -100,6 +89,6 @@
                 <StackPanel x:Name="Menu" Margin="10"/>
             </ScrollViewer>
         </Grid>
-        <Grid x:Name="StackPanelMain" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+        <UserControl x:Name="StackPanelMain" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
     </Grid>
 </Window>

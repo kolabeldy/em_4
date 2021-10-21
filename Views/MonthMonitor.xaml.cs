@@ -7,21 +7,15 @@ using System.Windows.Media;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Data;
+using em.ViewModels;
 
 namespace em.Vievs
 {
     public partial class MonthMonitor : UserControl
     {
-        private static MonthMonitor instance;
-        public static MonthMonitor GetInstance()
+        internal MonthMonitor(MonthMonitorViewModel model)
         {
-            if (instance == null)
-                instance = new MonthMonitor();
-            return instance;
-        }
-        public string ScreenName = "MonthMonitor";
-        private MonthMonitor()
-        {
+            DataContext = model;
             InitializeComponent();
         }
 

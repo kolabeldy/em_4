@@ -4,6 +4,7 @@ using System.Windows.Controls;
 using em.FilterPartials;
 using em.Vievs;
 using em.ViewModel.MainMenu;
+using em.ViewModels;
 using em.Views;
 using MaterialDesignThemes.Wpf;
 
@@ -11,17 +12,15 @@ namespace em
 {
     public partial class MainWindow : Window
     {
-        public MonitorMonthFilterPanel FilterPanelContent { get; set; }
+        MainWindowViewModel model = new MainWindowViewModel();
         public MainWindow()
         {
             InitializeComponent();
-            DataContext = this;
-
-            FilterPanelContent = new MonitorMonthFilterPanel();
+            DataContext = model;
 
             var menuMonitoring = new List<SubItem>();
             menuMonitoring.Add(new SubItem("Инфопанель", screen: null, idFunc: "DashboardShow"));
-            menuMonitoring.Add(new SubItem("Месячные отчёты", MonthMonitor.GetInstance()));
+            menuMonitoring.Add(new SubItem("Месячные отчёты", null, idFunc: "MonitorMonth"));
             menuMonitoring.Add(new SubItem("Суточные данные", DayMonitor.GetInstance()));
             menuMonitoring.Add(new SubItem("Потери энергоресурсов", LossesMonitor.GetInstance()));
             var item1 = new ItemMenu("Мониторинг", menuMonitoring, PackIconKind.MonitorDashboard);
@@ -77,6 +76,13 @@ namespace em
                 {
                     case "DashboardShow":
                         break;
+                    case "MonitorMonth":
+                        var panel = MonitorMonthFilterPanelViewModel.GetInstance(this.StackPanelMain);
+                        FilterPanel.Content = null;
+                        FilterPanel.Content = MonitorMonthFilterPanel.GetInstance(panel);
+                        model.IsFilterEnabled = true;
+                        panel.PanelShow();
+                        break;
                     case "ReportMonthShow":
                         break;
                     case "ReportFactorAnalysisShow":
@@ -121,9 +127,12 @@ namespace em
                 var screen = ((UserControl)sender);
                 if (screen != null)
                 {
-                    StackPanelMain.Children.Clear();
-                    StackPanelMain.Children.Add(screen);
-                    string sName = screen.ToString();
+                    //StackPanelMain.Children.Clear();
+                    //StackPanelMain.Children.Add(screen);
+                    model.IsFilterEnabled = false;
+                    FilterPanel.Content = null;
+                    StackPanelMain.Content = null;
+                    StackPanelMain.Content = screen;
                 }
             }
         }
@@ -131,7 +140,7 @@ namespace em
         private bool isClosePress = false;
         private void PopupBox_Closed(object sender, RoutedEventArgs e)
         {
-            if(!isClosePress)
+            if (!isClosePress)
                 FilterPopup.IsPopupOpen = true;
         }
 

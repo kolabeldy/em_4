@@ -9,6 +9,6 @@
              d:DesignHeight="450" d:DesignWidth="500" >
     <Grid>
         <Rectangle Fill="LightBlue" Margin="100" />
-        <TextBlock Text="Hello!" Foreground="Red" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBlock Text="{Binding Param}" Foreground="Red" HorizontalAlignment="Center" VerticalAlignment="Center"/>
     </Grid>
 </UserControl>
