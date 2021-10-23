@@ -4,8 +4,10 @@ namespace em.Filter
 {
     public partial class MonitorMonthFilterPanel : UserControl, IFilterPanelContent
     {
+        private MonitorMonthFilterPanelViewModel model;
+
         private static MonitorMonthFilterPanel instance;
-        internal static MonitorMonthFilterPanel GetInstance(MonitorMonthFilterPanelViewModel model)
+        public static MonitorMonthFilterPanel GetInstance(MonitorMonthFilterPanelViewModel model)
         {
             if (instance == null)
             {
@@ -13,10 +15,11 @@ namespace em.Filter
             }
             return instance;
         }
-        private MonitorMonthFilterPanel(MonitorMonthFilterPanelViewModel viewModel)
+        private MonitorMonthFilterPanel(MonitorMonthFilterPanelViewModel model)
         {
+            this.model = model;
             InitializeComponent();
-            DataContext = viewModel;
+            DataContext = model;
         }
     }
 }

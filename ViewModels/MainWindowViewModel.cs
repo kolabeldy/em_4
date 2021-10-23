@@ -15,7 +15,7 @@ namespace em.ViewModels
     {
         private IFilterPanelViewModel filterPanelViewModel;
         private IFrameViewModel frameModel;
-
+        private MonitorMonthFilterPanel monitorMonthFilterPanel;
 
         private IMainFrameContent _MainFrameContent;
         public IMainFrameContent MainFrameContent
@@ -65,23 +65,17 @@ namespace em.ViewModels
         private bool _IsClosePress = false;
         public bool IsClosePress { get => _IsClosePress; set => Set(ref _IsClosePress, value); }
 
+        public override void Execute(object? parameter) { }
 
-        public ICommand FilterPanelClose_Command { get; }
-        public override bool CanExecute(object? parameter) => true;
-        public override void Execute(object? parameter) { FilterPanelClose(); }
+        public MainWindowViewModel()
+        {
+            MainMenuInit();
+        }
         private void FilterPanelClose()
         {
             IsClosePress = true;
             IsFilterPopupOpen = false;
             IsClosePress = false;
-            filterPanelViewModel.NewFilterData = "------New Filter Data------";
-            frameModel.NewFilterData = filterPanelViewModel.NewFilterData;
-        }
-
-        public MainWindowViewModel()
-        {
-            FilterPanelClose_Command = new LambdaCommand(Execute, CanExecute);
-            MainMenuInit();
         }
 
         private void MainMenuInit()
@@ -135,7 +129,7 @@ namespace em.ViewModels
             MyMainMenu.Children.Add(new UserControlMenuItem(item5, this));
             MyMainMenu.Children.Add(new UserControlMenuItem(item6, this));
         }
-        internal void SwitchScreen(object sender, string idFunc = null)
+        public void SwitchScreen(object sender, string idFunc = null)
         {
             bool rez;
             if (idFunc != null)
@@ -146,12 +140,14 @@ namespace em.ViewModels
                         break;
                     case "MonitorMonth":
                         filterPanelViewModel = MonitorMonthFilterPanelViewModel.GetInstance();
+                        filterPanelViewModel.OnClosed += FilterPanelClose;
                         FilterPanelContent = null;
-                        FilterPanelContent = MonitorMonthFilterPanel.GetInstance((MonitorMonthFilterPanelViewModel)filterPanelViewModel);
+                        monitorMonthFilterPanel = MonitorMonthFilterPanel.GetInstance(filterPanelViewModel as MonitorMonthFilterPanelViewModel);
+                        FilterPanelContent = monitorMonthFilterPanel;
                         IsFilterEnabled = true;
                         MainFrameContent = null;
                         frameModel = MonthMonitorViewModel.GetInstance();
-                        frameModel.NewFilterData = filterPanelViewModel.NewFilterData;
+                        //frameModel.NewFilterData = filterPanelViewModel.NewFilterData;
                         MainFrameContent = MonthMonitor.GetInstance((MonthMonitorViewModel)frameModel);
                         break;
                     case "MonitorDay":

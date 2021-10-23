@@ -3,7 +3,7 @@ using System.Runtime.CompilerServices;
 
 namespace em.Models
 {
-    internal class NotifyBase: INotifyPropertyChanged
+    public class NotifyBase: INotifyPropertyChanged
     {
         private event PropertyChangedEventHandler? PropertyChangedHandlers;
 

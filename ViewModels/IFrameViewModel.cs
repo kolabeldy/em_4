@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace em.ViewModels
 {
-    internal interface IFrameViewModel
+    public interface IFrameViewModel
     {
         string NewFilterData { get; set; }
     }

@@ -11,7 +11,7 @@ using System.Windows;
 
 namespace em.Models
 {
-    internal class CostCenter : IdName, IDBModel
+    public class CostCenter : IdName, IDBModel
     {
         public bool IsMain { get; set; }
         public bool IsActual { get; set; }

@@ -3,15 +3,28 @@ using System;
 
 namespace em.Filter.Partials
 {
-    internal class FilterPeriodViewModel: ViewModelBase
+    public class FilterPeriodViewModel : ViewModelBase
     {
-        private DateTime _SelectedStartDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
+        private static int initCount = 0;
+
+        private bool _IsChanged;
+        public bool IsChanged
+        {
+            get => _IsChanged;
+            set
+            {
+                Set(ref _IsChanged, value);
+            }
+        }
+
+        private DateTime _SelectedStartDate;
         public DateTime SelectedStartDate
-        { 
+        {
             get => _SelectedStartDate;
             set
             {
-                Set(ref _SelectedStartDate, value);
+                if (Set(ref _SelectedStartDate, value))
+                    IsChanged = true;
             }
         }
         private DateTime _SelectedEndDate = DateTime.Now;
@@ -20,9 +33,17 @@ namespace em.Filter.Partials
             get => _SelectedEndDate;
             set
             {
-                Set(ref _SelectedEndDate, value);
+                if (Set(ref _SelectedEndDate, value))
+                    IsChanged = true;
             }
         }
         public override void Execute(object? parameter) { }
+        public FilterPeriodViewModel()
+        {
+            initCount++;
+            DateTime currDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1).AddMonths(-1);
+            SelectedStartDate = currDate;
+            SelectedEndDate = new DateTime(currDate.Year, currDate.Month, DateTime.DaysInMonth(currDate.Year, currDate.Month));
+        }
     }
 }

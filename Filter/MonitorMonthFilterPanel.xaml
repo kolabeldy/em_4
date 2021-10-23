@@ -11,5 +11,12 @@
         <UserControl Content="{Binding FilterCostCentersPanelContent}" />
         <UserControl Content="{Binding FilterEnergyResourcesPanelContent}" />
         <UserControl Content="{Binding FilterNormTypesPanelContent}" />
+        <Border Margin="15,10"
+                BorderThickness="0,0,0,1"
+                BorderBrush="{StaticResource PrimaryHueLightBrush}" />
+        <Button Content="Close FilterPanel" 
+                HorizontalAlignment="Right"
+                Margin="0,0,15,10"
+                Command="{Binding FilterPanelClose_Command}"/>
     </StackPanel>
 </UserControl>

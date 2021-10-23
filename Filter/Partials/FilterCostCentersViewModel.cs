@@ -5,7 +5,7 @@ using System.Windows.Input;
 
 namespace em.Filter.Partials
 {
-    internal class FilterCostCentersViewModel : ViewModelBase
+    public class FilterCostCentersViewModel : ViewModelBase
     {
         private int _MainComboBoxSelectedIndex = 0;
         public int MainComboBoxSelectedIndex 

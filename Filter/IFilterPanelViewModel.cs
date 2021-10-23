@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 
 namespace em.Filter
 {
-    internal interface IFilterPanelViewModel
+    public delegate void IsClosed();
+    public interface IFilterPanelViewModel
     {
         string NewFilterData { get; set; }
+        event IsClosed OnClosed;
     }
 }

@@ -11,7 +11,7 @@ using System.Windows;
 
 namespace em.Models
 {
-    internal class Product : IdName, IDBModel
+    public class Product : IdName, IDBModel
     {
         public CostCenter CostCenter {  get; set; } 
         public int IdUnit { get; set; }

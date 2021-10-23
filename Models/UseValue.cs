@@ -1,6 +1,6 @@
 ﻿namespace em.Models
 {
-    internal class UseValue : NotifyBase
+    public class UseValue : NotifyBase
     {
         private bool _IsFactChanged;
         private bool _IsPlanChanged;

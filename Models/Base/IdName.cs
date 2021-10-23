@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace em.Models.Base
 {
-    internal class IdName: NotifyBase
+    public class IdName: NotifyBase
     {
         public int Id { get; set; }
         public string Name { get; set; }

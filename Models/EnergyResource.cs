@@ -11,7 +11,7 @@ using System.Windows;
 
 namespace em.Models
 {
-    internal class EnergyResource : IdName, IDBModel
+    public class EnergyResource : IdName, IDBModel
     {
         public int IdGroup { get; set; }
         public string? ShortName { get; set; }

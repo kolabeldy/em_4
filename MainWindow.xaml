@@ -71,17 +71,10 @@
                                              Foreground="WhiteSmoke"
                                              IsPopupOpen="{Binding IsFilterPopupOpen}"
                                              IsEnabled="{Binding IsFilterEnabled}">
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition />
-                                <RowDefinition  Height="50"/>
-                            </Grid.RowDefinitions>
-                            <StackPanel Grid.Row="0">
-                                    <UserControl x:Name="FilterPanel"  Content="{Binding FilterPanelContent}"/>
+                            <StackPanel >
+                                <UserControl x:Name="FilterPanel"  Content="{Binding FilterPanelContent}"/>
                             </StackPanel>
-                                <Button Name="PopupCloseButton" Grid.Row="1" Content="Close" Command="{Binding FilterPanelClose_Command}" />
-                            </Grid>
-                    </materialDesign:PopupBox>
+                        </materialDesign:PopupBox>
                 </StackPanel>
                 </Border>
             </Grid>

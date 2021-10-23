@@ -7,7 +7,7 @@ using System.Linq;
 
 namespace em.Models
 {
-    internal class Use
+    public class Use
     {
         private IEnumerable<Period> SelectedPeriods { get; set; }
         private IEnumerable<CostCenter> SelectedCostCenters { get; set; }

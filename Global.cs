@@ -12,8 +12,8 @@ namespace em
     public static class Global
     {
         public static string dbpath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "db\\emdb.db");
-        internal static List<CostCenter> CostCenterSourceList= new List<CostCenter>();
-        internal static List<Unit> UnitSourceList = new List<Unit>();
+        public static List<CostCenter> CostCenterSourceList= new List<CostCenter>();
+        public static List<Unit> UnitSourceList = new List<Unit>();
 
     }
 }

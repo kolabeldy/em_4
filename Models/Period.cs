@@ -7,7 +7,7 @@ using em.Models.Base;
 
 namespace em.Models
 {
-    internal class Period : IdName
+    public class Period : IdName
     {
     }
 }
