@@ -1,4 +1,5 @@
-﻿using em.Models;
+﻿using em.Infrastructure.MessageBoxes;
+using em.Models;
 using em.ViewModels.Base;
 using System;
 
@@ -44,7 +45,16 @@ namespace em.Filter.Partials
             get => _SelectedStartDate;
             set
             {
-                if (value > SelectedEndDate) return;
+                if (value > SelectedEndDate && !isfirstload)
+                {
+                    bool? Result = new MessageBoxCustom("Начальная дата не может быть больше конечной!", MessageType.Confirmation, MessageButtons.Ok).ShowDialog();
+                    if (Result.Value)
+                    {
+                        value = _SelectedStartDate;
+                        DisplayDateStart = value;
+                        return;
+                    }
+                }
                 if (Set(ref _SelectedStartDate, value))
                 {
                     IsChanged = true;
@@ -52,13 +62,22 @@ namespace em.Filter.Partials
                 }
             }
         }
-        private DateTime _SelectedEndDate = DateTime.Now;
+        private DateTime _SelectedEndDate;
         public DateTime SelectedEndDate
         {
             get => _SelectedEndDate;
             set
             {
-                if (value < SelectedStartDate) return;
+                if (value < SelectedStartDate && !isfirstload)
+                {
+                    bool? Result = new MessageBoxCustom("Начальная дата не может быть больше конечной!", MessageType.Confirmation, MessageButtons.Ok).ShowDialog();
+                    if (Result.Value)
+                    {
+                        value = _SelectedEndDate;
+                        DisplayDateEnd = value;
+                        return;
+                    }
+                }
                 if (Set(ref _SelectedEndDate, value))
                 {
                     IsChanged = true;
@@ -67,8 +86,10 @@ namespace em.Filter.Partials
             }
         }
         public override void Execute(object? parameter) { }
+        private bool isfirstload;
         public FilterPeriodViewModel()
         {
+            isfirstload = true;
             PeriodModel = new Period();
             DateTime currDate = new DateTime(Period.MaxYear, Period.MaxMonth, 1);
             DisplayDateStart = new DateTime(Period.MinYear, Period.MinMonth, 1);
@@ -76,6 +97,7 @@ namespace em.Filter.Partials
 
             SelectedStartDate = currDate;
             SelectedEndDate = new DateTime(currDate.Year, currDate.Month, DateTime.DaysInMonth(currDate.Year, currDate.Month));
+            isfirstload = false;
         }
     }
 }
