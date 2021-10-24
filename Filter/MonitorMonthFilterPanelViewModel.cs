@@ -1,6 +1,7 @@
 ﻿using em.Commands;
 using em.Filter.Partials;
 using em.ViewModels.Base;
+using System;
 using System.Windows.Input;
 
 namespace em.Filter
@@ -43,14 +44,13 @@ namespace em.Filter
         public override void Execute(object? parameter) => FilterPanelClose();
         private void FilterPanelClose()
         {
-            if(FilterPeriodViewModel.IsChanged)
-            {
-                Refresh();
-            }
+            if (FilterPeriodViewModel.IsChanged) Refresh();
             OnClosed();
         }
         private void Refresh()
         {
+            int startPeriod = FilterPeriodViewModel.PeriodModel.SelectedStartPeriod;
+            int endPeriod = FilterPeriodViewModel.PeriodModel.SelectedEndPeriod;
             FilterPeriodViewModel.IsChanged = false;
         }
         private MonitorMonthFilterPanelViewModel()

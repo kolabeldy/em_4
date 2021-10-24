@@ -34,8 +34,8 @@
                             HorizontalAlignment="Stretch"
                             Style="{StaticResource MaterialDesignFilledDatePicker}"
                             materialDesign:HintAssist.Hint="начальный период"
-                            DisplayDateEnd="2021-06-01"
-                            DisplayDateStart="2014-01-01"
+                            DisplayDateEnd="{Binding DisplayDateEnd}"
+                            DisplayDateStart="{Binding DisplayDateStart}"
                             SelectedDate="{Binding SelectedStartDate, Mode=TwoWay}"
                             CalendarOpened="StartPeriodPicker_Opened">
                     <DatePicker.Resources>
