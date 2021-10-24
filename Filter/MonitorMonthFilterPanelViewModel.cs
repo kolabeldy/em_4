@@ -1,5 +1,6 @@
 ﻿using em.Commands;
 using em.Filter.Partials;
+using em.Models;
 using em.ViewModels.Base;
 using System;
 using System.Windows.Input;
@@ -49,8 +50,10 @@ namespace em.Filter
         }
         private void Refresh()
         {
-            int startPeriod = FilterPeriodViewModel.PeriodModel.SelectedStartPeriod;
-            int endPeriod = FilterPeriodViewModel.PeriodModel.SelectedEndPeriod;
+            Period period = FilterPeriodViewModel.PeriodModel;
+
+            int startPeriod = period.SelectedStartPeriod;
+            int endPeriod = period.SelectedEndPeriod;
             FilterPeriodViewModel.IsChanged = false;
         }
         private MonitorMonthFilterPanelViewModel()
