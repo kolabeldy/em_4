@@ -10,7 +10,7 @@ using System.Data;
 namespace em.Models
 {
     public enum MonthOutputStyle { AsNumeric, AsString };
-    public class Period: INotifyPropertyChanged, IDBModel
+    public class Period: INotifyPropertyChanged, IDBModel, IPeriod
     {
         private int _Id;
         public int Id
