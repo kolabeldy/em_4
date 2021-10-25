@@ -60,6 +60,8 @@ namespace em.Filter
 
             int startPeriod = period.SelectedStartPeriod;
             int endPeriod = period.SelectedEndPeriod;
+            period.SetDynamicPeriods();
+
             FilterPeriodViewModel.IsChanged = false;
         }
         private MonitorMonthFilterPanelViewModel()

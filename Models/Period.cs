@@ -78,6 +78,8 @@ namespace em.Models
         public static int MaxMonth {  get; set; }
         public int MinSelectedPeriod {  get; set; }
         public int MaxSelectedPeriod {  get; set;}
+        public int MinDynamicSelectedPeriod { get; set; }
+        public int MaxDynamicSelectedPeriod { get; set; }
         public List<Period> Periods {  get; set;}
 
         public Period()
@@ -86,7 +88,20 @@ namespace em.Models
         public static int GetYear(int period) => period / 100;
         public static int GetMonth(int period) => period - GetYear(period) * 100;
         public static string GetMonthName(int month) => monthArray[month - 1];
-
+        public void SetDynamicPeriods()
+        {
+            int monthCount = DifferenceBetweenDatesInMonth(SelectedStartPeriod, SelectedEndPeriod);
+            if (monthCount > 2)
+            {
+                MinDynamicSelectedPeriod = DateTimeToInt(SelectedStartDate);
+                MaxDynamicSelectedPeriod = DateTimeToInt(SelectedEndDate);
+            }
+            else
+            {
+                MaxDynamicSelectedPeriod = DateTimeToInt(SelectedEndDate);
+                MinDynamicSelectedPeriod = PeriodMonthAdd(SelectedEndDate, Global.DynamicPeriodMonthCount);
+            }
+        }
         public static void PeriodInit( )
         {
             SetMinMaxPeriod();
@@ -117,6 +132,20 @@ namespace em.Models
             else return year + " " + monthArray[month - 1];
         }
 
+        public static int PeriodMonthAdd(DateTime period, int month)
+        {
+            return DateTimeToInt(period.AddMonths(1 - month));
+
+        }
+        public static int DifferenceBetweenDatesInMonth(DateTime datestart, DateTime dateend)
+        {
+            return ((dateend.Year - datestart.Year) * 12) + dateend.Month - datestart.Month;
+        }
+        public static int DifferenceBetweenDatesInMonth(int datestart, int dateend)
+        {
+            return ((GetYear(dateend) - GetYear(datestart)) * 12) + GetMonth(dateend) - GetMonth(datestart) + 1;
+        }
+
         private static string[] monthArray = new string[]
         { "янв", "фев", "мар", "апр", "май", "июн", "июл", "авг", "сен", "окт", "ноя", "дек" };
 
@@ -141,8 +170,9 @@ namespace em.Models
             //            IsMain = Convert.ToBoolean(dr["IsMain"]),
             //            IsTechnology = Convert.ToBoolean(dr["IsTechnology"]),
             //        }).ToList();
-            result.AddRange((IEnumerable<T>)list);
-            return result;
+            //result.AddRange((IEnumerable<T>)list);
+            //return result;
+            return null;
         }
         public int Add(object rec)
         {
