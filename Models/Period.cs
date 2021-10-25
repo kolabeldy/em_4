@@ -89,12 +89,19 @@ namespace em.Models
 
         public static void PeriodInit( )
         {
-            MinPeriod = 201401;
-            MaxPeriod = 202106;
+            SetMinMaxPeriod();
             MinYear = GetYear(MinPeriod);
             MaxYear = GetYear(MaxPeriod); ;
             MinMonth = GetMonth(MinPeriod);
             MaxMonth = GetMonth(MaxPeriod);
+        }
+        private static void SetMinMaxPeriod()
+        {
+            string sql = "SELECT MinPeriod, MaxPeriod FROM MinMaxPeriods";
+            DataTable dt = new DataTable();
+            dt = Sqlite.Select(sql);
+            MinPeriod = Convert.ToInt32(dt.Rows[0].ItemArray[0].ToString());
+            MaxPeriod = Convert.ToInt32(dt.Rows[0].ItemArray[1].ToString());
         }
 
         public static int DateTimeToInt(DateTime date)
@@ -117,14 +124,14 @@ namespace em.Models
 
         public List<T> Get<T>()
         {
-            List<T> result = new();
-            List<Period> list = new();
+            //List<T> result = new();
+            //List<Period> list = new();
 
-            var resourceManager = Properties.Resources.ResourceManager;
-            string sql = "SELECT MIN(Period) FROM ERUsesMonth GROUP By Period";
+            //var resourceManager = Properties.Resources.ResourceManager;
+            //string sql = "SELECT MIN(Period) FROM ERUsesMonth GROUP By Period";
 
-            DataTable dt = new DataTable();
-            dt = Sqlite.Select(sql);
+            //DataTable dt = new DataTable();
+            //dt = Sqlite.Select(sql);
             //list = (from DataRow dr in dt.Rows
             //        select new CostCenter()
             //        {
@@ -136,6 +143,34 @@ namespace em.Models
             //        }).ToList();
             result.AddRange((IEnumerable<T>)list);
             return result;
+        }
+        public int Add(object rec)
+        {
+            //if (rec == null) return -1;
+            //CostCenter record = rec as CostCenter;
+            //string sql = "INSERT INTO CostCenters (Id, Name, IsMain, IsTechnology, IsActual) VALUES ("
+            //                + record.Id.ToString() + ", '" + record.Name + "'" + ", " + record.IsMain.ToString() + ", "
+            //                + record.IsTechnology.ToString() + ", " + record.IsActual.ToString() + ")";
+            //return Sqlite.ExecNonQuery(sql);
+            return 0;
+        }
+        public int Delete(string whereStr)
+        {
+            //string sql = "Delete FROM CostCenters WHERE " + whereStr;
+            //return Sqlite.ExecNonQuery(sql);
+            return 0;
+        }
+        public int Update(object rec)
+        {
+            //if (rec == null) return -1;
+            //CostCenter record = rec as CostCenter;
+            //string sql = "UPDATE CostCenters SET (Name, IsMain, IsTechnology, IsActual) = ("
+            //                + "'" + record.Name + "'" + ", " + record.IsMain.ToString()
+            //                + ", " + record.IsTechnology.ToString() + ", " + record.IsActual.ToString() + ")"
+            //                + "WHERE Id = " + record.Id.ToString();
+
+            //return Sqlite.ExecNonQuery(sql);
+            return 0;
         }
 
         #endregion

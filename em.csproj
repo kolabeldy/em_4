@@ -31,11 +31,18 @@
     <PackageReference Include="MaterialDesignThemes" Version="4.2.1" />
     <PackageReference Include="Microsoft.Data.Sqlite.Core" Version="5.0.11" />
     <PackageReference Include="ShowMeTheXAML.MSBuild" Version="2.0.0" />
+    <PackageReference Include="SQLitePCLRaw.bundle_winsqlite3" Version="2.0.6" />
   </ItemGroup>
 
   <ItemGroup>
     <Resource Include="Assets\EMonitor.ico" />
     <Resource Include="Assets\Himprom_logo1.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="db\emdb.db">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
   <ItemGroup>
