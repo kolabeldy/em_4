@@ -56,7 +56,7 @@ namespace em.Filter
         }
         private void Refresh()
         {
-            Period period = FilterPeriodViewModel.PeriodModel;
+            Period period = FilterPeriodViewModel.PeriodData;
 
             int startPeriod = period.SelectedStartPeriod;
             int endPeriod = period.SelectedEndPeriod;

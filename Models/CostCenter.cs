@@ -1,13 +1,9 @@
 ﻿using em.db;
 using em.Models.Base;
-using Microsoft.Data.Sqlite;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Data;
-using System.Data.SqlClient;
 using System.Linq;
-using System.Windows;
 
 namespace em.Models
 {

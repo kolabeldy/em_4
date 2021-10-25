@@ -8,6 +8,7 @@ using System.Windows.Controls;
 using em.Filter;
 using System.Windows.Input;
 using em.Commands;
+using em.Models;
 
 namespace em.ViewModels
 {
@@ -69,8 +70,13 @@ namespace em.ViewModels
 
         public MainWindowViewModel()
         {
+            Period.PeriodInit();
             MainMenuInit();
         }
+        //private void PeriodInit()
+        //{
+        //    Period.PeriodInit(201401, 202106);
+        //}
         private void FilterPanelClose()
         {
             IsClosePress = true;

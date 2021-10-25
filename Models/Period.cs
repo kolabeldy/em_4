@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
+using em.db;
 using em.Models.Base;
+using System.Data;
 
 namespace em.Models
 {
     public enum MonthOutputStyle { AsNumeric, AsString };
-    public class Period: INotifyPropertyChanged
+    public class Period: INotifyPropertyChanged, IDBModel
     {
         private int _Id;
         public int Id
@@ -82,6 +82,13 @@ namespace em.Models
 
         public Period()
         {
+        }
+        public static int GetYear(int period) => period / 100;
+        public static int GetMonth(int period) => period - GetYear(period) * 100;
+        public static string GetMonthName(int month) => monthArray[month - 1];
+
+        public static void PeriodInit( )
+        {
             MinPeriod = 201401;
             MaxPeriod = 202106;
             MinYear = GetYear(MinPeriod);
@@ -89,9 +96,6 @@ namespace em.Models
             MinMonth = GetMonth(MinPeriod);
             MaxMonth = GetMonth(MaxPeriod);
         }
-        public static int GetYear(int period) => period / 100;
-        public static int GetMonth(int period) => period - GetYear(period) * 100;
-        public static string GetMonthName(int month) => monthArray[month - 1];
 
         public static int DateTimeToInt(DateTime date)
         {
@@ -108,6 +112,33 @@ namespace em.Models
 
         private static string[] monthArray = new string[]
         { "янв", "фев", "мар", "апр", "май", "июн", "июл", "авг", "сен", "окт", "ноя", "дек" };
+
+        #region IDBModel realisattion
+
+        public List<T> Get<T>()
+        {
+            List<T> result = new();
+            List<Period> list = new();
+
+            var resourceManager = Properties.Resources.ResourceManager;
+            string sql = "SELECT MIN(Period) FROM ERUsesMonth GROUP By Period";
+
+            DataTable dt = new DataTable();
+            dt = Sqlite.Select(sql);
+            //list = (from DataRow dr in dt.Rows
+            //        select new CostCenter()
+            //        {
+            //            Id = Convert.ToInt32(dr["Id"]),
+            //            Name = dr["Name"].ToString(),
+            //            IsActual = Convert.ToBoolean(dr["IsActual"]),
+            //            IsMain = Convert.ToBoolean(dr["IsMain"]),
+            //            IsTechnology = Convert.ToBoolean(dr["IsTechnology"]),
+            //        }).ToList();
+            result.AddRange((IEnumerable<T>)list);
+            return result;
+        }
+
+        #endregion
 
         #region INotifyProperty
 

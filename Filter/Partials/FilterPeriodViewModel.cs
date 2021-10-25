@@ -7,7 +7,7 @@ namespace em.Filter.Partials
 {
     public class FilterPeriodViewModel : ViewModelBase
     {
-        public Period PeriodModel { get; set; }
+        public Period PeriodData { get; set; }
 
         private bool _IsChanged;
         public bool IsChanged
@@ -53,7 +53,7 @@ namespace em.Filter.Partials
                 if (Set(ref _SelectedStartDate, value))
                 {
                     IsChanged = true;
-                    PeriodModel.SelectedStartDate = value;
+                    PeriodData.SelectedStartDate = value;
                 }
             }
         }
@@ -66,7 +66,7 @@ namespace em.Filter.Partials
                 if (Set(ref _SelectedEndDate, value))
                 {
                     IsChanged = true;
-                    PeriodModel.SelectedEndDate = value;
+                    PeriodData.SelectedEndDate = value;
                 }
             }
         }
@@ -74,11 +74,10 @@ namespace em.Filter.Partials
 
         public FilterPeriodViewModel()
         {
-            PeriodModel = new Period();
+            PeriodData= new Period();
             DateTime currDate = new DateTime(Period.MaxYear, Period.MaxMonth, 1);
             DisplayDateStart = new DateTime(Period.MinYear, Period.MinMonth, 1);
             DisplayDateEnd = currDate;
-
             SelectedStartDate = currDate;
             SelectedEndDate = new DateTime(currDate.Year, currDate.Month, DateTime.DaysInMonth(currDate.Year, currDate.Month));
         }
