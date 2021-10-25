@@ -44,20 +44,30 @@
                     Grid.Column="0"
                     BorderBrush="{StaticResource PrimaryHueLightBrush}" 
                     BorderThickness="0,0,0,1">
-                    <StackPanel Orientation="Horizontal">
-                        <Label VerticalAlignment="Center"
-                               Foreground="WhiteSmoke"
-                               Margin="10,0,10,0">
-                            <materialDesign:PackIcon
-                                Kind="FilterOutline"
-                                Height="25"
-                                Width="25"/>
-                        </Label>
-                    <TextBlock HorizontalAlignment="Right"
-                               VerticalAlignment="Center"
-                               Style="{StaticResource MaterialDesignBody1TextBlock}"
-                               Foreground="WhiteSmoke"
-                               Text="Фильтр" />
+                    <StackPanel Orientation="Horizontal"
+                                HorizontalAlignment="Stretch">
+                        <Button HorizontalAlignment="Stretch"
+                                VerticalAlignment="Stretch"
+                                Margin="10,0,10,0"
+                                Width="190"
+                                HorizontalContentAlignment="Left"
+                                IsEnabled="{Binding IsFilterEnabled}">
+                            
+                                <StackPanel Orientation="Horizontal"
+                                            HorizontalAlignment="Left"
+                                            Margin="-10,0,0,0">
+                                    <materialDesign:PackIcon
+                                        Kind="FilterOutline"
+                                        Height="25"
+                                        Width="25"/>
+                                    <TextBlock HorizontalAlignment="Left"
+                                               Margin="10,0"
+                                               VerticalAlignment="Center"
+                                               Style="{StaticResource MaterialDesignBody1TextBlock}"
+                                               Foreground="WhiteSmoke"
+                                               Text="Фильтр" />
+                                </StackPanel>
+                        </Button>
                     </StackPanel>
                 </Border>
                 <Border Grid.Column="1" BorderBrush="{StaticResource PrimaryHueLightBrush}" BorderThickness="0,0,1,1">
