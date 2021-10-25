@@ -1,5 +1,6 @@
 ﻿using em.Commands;
 using em.Filter.Partials;
+using em.Infrastructure.MessageBoxes;
 using em.Models;
 using em.ViewModels.Base;
 using System;
@@ -45,6 +46,11 @@ namespace em.Filter
         public override void Execute(object? parameter) => FilterPanelClose();
         private void FilterPanelClose()
         {
+            if (FilterPeriodViewModel.SelectedStartDate > FilterPeriodViewModel.SelectedEndDate)
+            {
+                bool? Result = new MessageBoxCustom("Начальная дата не может быть больше конечной!", MessageType.Confirmation, MessageButtons.Ok).ShowDialog();
+                return;
+            }
             if (FilterPeriodViewModel.IsChanged) Refresh();
             OnClosed();
         }
