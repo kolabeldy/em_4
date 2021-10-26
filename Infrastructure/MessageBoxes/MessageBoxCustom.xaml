@@ -4,24 +4,25 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="MessageBoxWindow" Height="200" Width="500" 
-        WindowStartupLocation="CenterScreen" WindowStyle="None" Background="White" 
-        ResizeMode="CanResize" Topmost="True" ShowInTaskbar="False"
+        Title="MessageBoxWindow" Height="190" Width="500" 
+        WindowStartupLocation="CenterScreen" WindowStyle="ToolWindow" 
+        ResizeMode="NoResize" Topmost="True" ShowInTaskbar="False"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        Background="{DynamicResource MaterialDesignPaper}"
         TextElement.FontWeight="Regular"
         TextElement.FontSize="10"
         TextOptions.TextFormattingMode="Ideal"
         TextOptions.TextRenderingMode="Auto"        
         FontFamily="{DynamicResource MaterialDesignFont}">
-    <GroupBox x:Name="cardHeader" 
+    <!--<GroupBox x:Name="cardHeader" 
                 Grid.Row="0" 
                 Padding="5" 
                 Header="Header"
                 HorizontalAlignment="Stretch"  
                 VerticalAlignment="Stretch"
                 FontSize="16"
-                Visibility="Visible">
+                Visibility="Visible">-->
         <Grid >
             <Grid.RowDefinitions>
                 <RowDefinition />
@@ -42,11 +43,11 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
-                <Button x:Name="btnOk" Click="btnOk_Click" Grid.Column="1" Style="{StaticResource MaterialDesignRaisedButton}" Margin="5" Width="100" Content="OK" ToolTip="Ok"/>
-                <Button x:Name="btnCancel" Click="btnCancel_Click" Grid.Column="2" Style="{StaticResource MaterialDesignRaisedButton}" Margin="5" Width="100" Content="Cancel" ToolTip="Cancel"/>
-                <Button x:Name="btnYes" Click="btnYes_Click" Grid.Column="1" Style="{StaticResource MaterialDesignRaisedButton}" Margin="5" Width="100" Content="Yes" ToolTip="Yes"/>
-                <Button x:Name="btnNo" Click="btnNo_Click" Grid.Column="2" Style="{StaticResource MaterialDesignRaisedButton}" Margin="5" Width="100" Content="No" ToolTip="No"/>
+                <Button x:Name="btnOk" Click="btnOk_Click" Grid.Column="1" Style="{StaticResource MaterialDesignRaisedButton}" Margin="5" Width="100" Content="OK" />
+                <Button x:Name="btnCancel" Click="btnCancel_Click" Grid.Column="2" Style="{StaticResource MaterialDesignRaisedButton}" Margin="5" Width="100" Content="Cancel" />
+                <Button x:Name="btnYes" Click="btnYes_Click" Grid.Column="1" Style="{StaticResource MaterialDesignRaisedButton}" Margin="5" Width="100" Content="Yes" />
+                <Button x:Name="btnNo" Click="btnNo_Click" Grid.Column="2" Style="{StaticResource MaterialDesignRaisedButton}" Margin="5" Width="100" Content="No" />
             </Grid>
         </Grid>
-    </GroupBox>
+    <!--</GroupBox>-->
 </Window>

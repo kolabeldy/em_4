@@ -27,22 +27,22 @@ namespace em.Infrastructure.MessageBoxes
             {
 
                 case MessageType.Info:
-                    cardHeader.Header = "Информация";
+                    this.Title = "Информация";
                     break;
                 case MessageType.Confirmation:
-                    cardHeader.Header = "Внимание";
+                    this.Title = "Внимание";
                     break;
                 case MessageType.Success:
                     {
-                        cardHeader.Header = "Успешно";
+                        this.Title = "Успешно";
                     }
                     break;
                 case MessageType.Warning:
-                    cardHeader.Header = "Предупреждение";
+                    this.Title = "Предупреждение";
                     break;
                 case MessageType.Error:
                     {
-                        cardHeader.Header = "Ошибка";
+                        this.Title = "Ошибка";
                     }
                     break;
             }
