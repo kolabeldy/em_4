@@ -39,6 +39,7 @@ namespace em.Models.Base
         //static int DateTimeToInt(DateTime date);
         //static string GetPeriodName(int period, MonthOutputStyle monthStyle = MonthOutputStyle.AsNumeric);
         //static int PeriodMonthAdd(DateTime period, int month);
+        //static int PeriodMonthAdd(int period, int month);
         //static int DifferenceBetweenDatesInMonth(DateTime datestart, DateTime dateend);
         //static int DifferenceBetweenDatesInMonth(int datestart, int dateend);
     }

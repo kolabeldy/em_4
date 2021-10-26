@@ -14,39 +14,39 @@
         TextOptions.TextFormattingMode="Ideal"
         TextOptions.TextRenderingMode="Auto"        
         FontFamily="{DynamicResource MaterialDesignFont}">
-        <GroupBox x:Name="cardHeader" 
-                  Grid.Row="0" 
-                  Padding="5" 
-                  Header="Header"
-                  HorizontalAlignment="Stretch"  
-                  VerticalAlignment="Stretch"
-                  FontSize="16"
-                  Visibility="Visible">
-            <Grid >
-                <Grid.RowDefinitions>
-                    <RowDefinition />
-                    <RowDefinition  Height="Auto "/>
-                </Grid.RowDefinitions>
-                <TextBlock x:Name="txtMessage" 
-                           Grid.Row="0"
-                           Margin="0,20"
-                           HorizontalAlignment="Center" 
-                           VerticalAlignment="Center"
-                           Text="Message test string"
-                           FontSize="14" />
-                <Grid Grid.Row="1" Margin="0,20,0,20">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="auto"/>
-                        <ColumnDefinition Width="auto"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
+    <GroupBox x:Name="cardHeader" 
+                Grid.Row="0" 
+                Padding="5" 
+                Header="Header"
+                HorizontalAlignment="Stretch"  
+                VerticalAlignment="Stretch"
+                FontSize="16"
+                Visibility="Visible">
+        <Grid >
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition  Height="Auto "/>
+            </Grid.RowDefinitions>
+            <TextBlock x:Name="txtMessage" 
+                        Grid.Row="0"
+                        Margin="0,20"
+                        HorizontalAlignment="Center" 
+                        VerticalAlignment="Center"
+                        Text="Message test string"
+                        FontSize="14" />
+            <Grid Grid.Row="1" Margin="0,20,0,20">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
 
-                    <Button x:Name="btnOk" Click="btnOk_Click" Grid.Column="1" Style="{StaticResource MaterialDesignRaisedButton}" Margin="5" Width="100" Content="OK" ToolTip="Ok"/>
-                    <Button x:Name="btnCancel" Click="btnCancel_Click" Grid.Column="2" Style="{StaticResource MaterialDesignRaisedButton}" Margin="5" Width="100" Content="Cancel" ToolTip="Cancel"/>
-                    <Button x:Name="btnYes" Click="btnYes_Click" Grid.Column="1" Style="{StaticResource MaterialDesignRaisedButton}" Margin="5" Width="100" Content="Yes" ToolTip="Yes"/>
-                    <Button x:Name="btnNo" Click="btnNo_Click" Grid.Column="2" Style="{StaticResource MaterialDesignRaisedButton}" Margin="5" Width="100" Content="No" ToolTip="No"/>
-                </Grid>
+                <Button x:Name="btnOk" Click="btnOk_Click" Grid.Column="1" Style="{StaticResource MaterialDesignRaisedButton}" Margin="5" Width="100" Content="OK" ToolTip="Ok"/>
+                <Button x:Name="btnCancel" Click="btnCancel_Click" Grid.Column="2" Style="{StaticResource MaterialDesignRaisedButton}" Margin="5" Width="100" Content="Cancel" ToolTip="Cancel"/>
+                <Button x:Name="btnYes" Click="btnYes_Click" Grid.Column="1" Style="{StaticResource MaterialDesignRaisedButton}" Margin="5" Width="100" Content="Yes" ToolTip="Yes"/>
+                <Button x:Name="btnNo" Click="btnNo_Click" Grid.Column="2" Style="{StaticResource MaterialDesignRaisedButton}" Margin="5" Width="100" Content="No" ToolTip="No"/>
             </Grid>
-        </GroupBox>
+        </Grid>
+    </GroupBox>
 </Window>

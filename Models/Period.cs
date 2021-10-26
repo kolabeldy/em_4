@@ -98,16 +98,16 @@ namespace em.Models
             }
             else
             {
-                int monthCountFromMax = DifferenceBetweenDatesInMonth(SelectedEndPeriod, MaxSelectedPeriod);
+                int monthCountFromMax = DifferenceBetweenDatesInMonth(SelectedEndPeriod, MaxPeriod);
                 if (monthCountFromMax > Global.DynamicPeriodMonthCount / 2 - 1)
                 {
-                    MaxDynamicSelectedPeriod = PeriodMonthAdd(SelectedEndDate, Global.DynamicPeriodMonthCount / 2 - 1);
-                    MinDynamicSelectedPeriod = PeriodMonthAdd(MaxDynamicSelectedPeriod, -Global.DynamicPeriodMonthCount);
+                    MaxDynamicSelectedPeriod = PeriodMonthAdd(SelectedEndPeriod, Global.DynamicPeriodMonthCount / 2 - 1);
+                    MinDynamicSelectedPeriod = PeriodMonthAdd(MaxDynamicSelectedPeriod, -Global.DynamicPeriodMonthCount + 1);
                 }
                 else
                 {
-                    MaxDynamicSelectedPeriod = MaxSelectedPeriod;
-                    MinDynamicSelectedPeriod = PeriodMonthAdd(MaxDynamicSelectedPeriod, -Global.DynamicPeriodMonthCount);
+                    MaxDynamicSelectedPeriod = MaxPeriod;
+                    MinDynamicSelectedPeriod = PeriodMonthAdd(MaxDynamicSelectedPeriod, -Global.DynamicPeriodMonthCount + 1);
                 }
             }
         }
@@ -143,13 +143,13 @@ namespace em.Models
 
         public static int PeriodMonthAdd(DateTime period, int month)
         {
-            return DateTimeToInt(period.AddMonths(1 - month));
+            return DateTimeToInt(period.AddMonths(month));
 
         }
         public static int PeriodMonthAdd(int period, int month)
         {
             DateTime date = new DateTime(GetYear(period), GetMonth(period), 1);
-            return DateTimeToInt(date.AddMonths(1 - month));
+            return DateTimeToInt(date.AddMonths(month));
 
         }
 
@@ -159,7 +159,7 @@ namespace em.Models
         }
         public static int DifferenceBetweenDatesInMonth(int datestart, int dateend)
         {
-            return ((GetYear(dateend) - GetYear(datestart)) * 12) + GetMonth(dateend) - GetMonth(datestart) + 1;
+            return ((GetYear(dateend) - GetYear(datestart)) * 12) + GetMonth(dateend) - GetMonth(datestart);
         }
 
         private static string[] monthArray = new string[]

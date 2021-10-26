@@ -45,9 +45,9 @@ namespace em.Filter.Partials
             if (calendar.DisplayMode == CalendarMode.Month)
             {
                 DateTime d = calendar.DisplayDate;
-                int lastDay = DateTime.DaysInMonth(d.Year, d.Month);
-                calendar.DisplayDate = new DateTime(d.Year, d.Month, lastDay);
-                calendar.SelectedDate = calendar.DisplayDate;
+                DateTime newdate = new DateTime(d.Year, d.Month, DateTime.DaysInMonth(d.Year, d.Month));
+                calendar.SelectedDate = newdate;
+                calendar.DisplayDate = newdate;
                 EndPeriodPicker.IsDropDownOpen = false;
             }
         }
