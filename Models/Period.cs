@@ -98,8 +98,17 @@ namespace em.Models
             }
             else
             {
-                MaxDynamicSelectedPeriod = DateTimeToInt(SelectedEndDate);
-                MinDynamicSelectedPeriod = PeriodMonthAdd(SelectedEndDate, Global.DynamicPeriodMonthCount);
+                int monthCountFromMax = DifferenceBetweenDatesInMonth(SelectedEndPeriod, MaxSelectedPeriod);
+                if (monthCountFromMax > Global.DynamicPeriodMonthCount / 2 - 1)
+                {
+                    MaxDynamicSelectedPeriod = PeriodMonthAdd(SelectedEndDate, Global.DynamicPeriodMonthCount / 2 - 1);
+                    MinDynamicSelectedPeriod = PeriodMonthAdd(MaxDynamicSelectedPeriod, -Global.DynamicPeriodMonthCount);
+                }
+                else
+                {
+                    MaxDynamicSelectedPeriod = MaxSelectedPeriod;
+                    MinDynamicSelectedPeriod = PeriodMonthAdd(MaxDynamicSelectedPeriod, -Global.DynamicPeriodMonthCount);
+                }
             }
         }
         public static void PeriodInit( )
@@ -137,6 +146,13 @@ namespace em.Models
             return DateTimeToInt(period.AddMonths(1 - month));
 
         }
+        public static int PeriodMonthAdd(int period, int month)
+        {
+            DateTime date = new DateTime(GetYear(period), GetMonth(period), 1);
+            return DateTimeToInt(date.AddMonths(1 - month));
+
+        }
+
         public static int DifferenceBetweenDatesInMonth(DateTime datestart, DateTime dateend)
         {
             return ((dateend.Year - datestart.Year) * 12) + dateend.Month - datestart.Month;
