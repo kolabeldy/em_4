@@ -61,7 +61,7 @@
                                  HorizontalAlignment="Center"
                                  Foreground="WhiteSmoke"
                                  PopupHorizontalOffset="30"
-                                 PopupVerticalOffset="40"
+                                 PopupVerticalOffset="80"
                                  IsPopupOpen="{Binding IsFilterPopupOpen}"
                                  IsEnabled="{Binding IsFilterEnabled}">
                         <UserControl x:Name="FilterPanel" 
