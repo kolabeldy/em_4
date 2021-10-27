@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:em"
         xmlns:vm="clr-namespace:em.ViewModels"
-        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         TextElement.FontWeight="Regular"
         TextElement.FontSize="13"
@@ -34,43 +34,41 @@
             </Grid.RowDefinitions>
             
             <StackPanel Grid.Column="0"
-                        Orientation="Horizontal"
-                        IsEnabled="{Binding IsFilterEnabled}">
-                <StackPanel Orientation="Horizontal"
-                            IsEnabled="{Binding IsFilterEnabled}">
+                        Orientation="Horizontal">
                         
-                    <materialDesign:PackIcon
-                        VerticalAlignment="Center"
-                        Foreground="WhiteSmoke"
-                        Kind="FilterOutline"
-                        Margin="15,0,0,0"
-                        Height="25"
-                        Width="25"/>
-                    <TextBlock Grid.Column="1"
-                                HorizontalAlignment="Left"
-                                Margin="12,0"
-                                VerticalAlignment="Center"
-                                Style="{StaticResource MaterialDesignBody1TextBlock}"
-                                Foreground="WhiteSmoke"
-                                Text="Фильтр" />
-                </StackPanel>
-                <materialDesign:PopupBox Name="FilterPopup"
-                                            StaysOpen="True"
-                                            Margin="67,0,0,0"
-                                            PlacementMode="RightAndAlignTopEdges"
-                                            HorizontalAlignment="Center"
-                                            VerticalAlignment="Center"
-                                            Foreground="WhiteSmoke"
-                                            PopupHorizontalOffset="30"
-                                            PopupVerticalOffset="40"
-                                            IsPopupOpen="{Binding IsFilterPopupOpen}"
-                                            IsEnabled="{Binding IsFilterEnabled}">
-                    <StackPanel >
+                <Label
+                    VerticalAlignment="Center"
+                    IsEnabled="{Binding IsFilterEnabled}"
+                    Content="{md:PackIcon Filter}"
+                    Foreground="LightGray"
+                    Margin="15,0,0,0"
+                    Height="25"
+                    Width="25"/>
+                <Label Grid.Column="1"
+                       HorizontalAlignment="Left"
+                       Margin="10,0"
+                       Foreground="WhiteSmoke"
+                       VerticalAlignment="Center"
+                       IsEnabled="{Binding IsFilterEnabled}"
+                       FontSize="13"
+                       Content="Фильтр" />
+
+                <StackPanel Margin="75,0,0,0"
+                            VerticalAlignment="Center">
+                    <md:PopupBox Name="FilterPopup"
+                                 StaysOpen="True"
+                                 PlacementMode="RightAndAlignTopEdges"
+                                 HorizontalAlignment="Center"
+                                 Foreground="WhiteSmoke"
+                                 PopupHorizontalOffset="30"
+                                 PopupVerticalOffset="40"
+                                 IsPopupOpen="{Binding IsFilterPopupOpen}"
+                                 IsEnabled="{Binding IsFilterEnabled}">
                         <UserControl x:Name="FilterPanel" 
-                                        Content="{Binding FilterPanelContent}"/>
-                    </StackPanel>
-                </materialDesign:PopupBox>
-                
+                                     Content="{Binding FilterPanelContent}"/>
+                    </md:PopupBox>
+                </StackPanel>
+
             </StackPanel>
             
             <ScrollViewer Grid.Row="1"
