@@ -111,7 +111,7 @@ namespace em.Models
                 }
             }
         }
-        public static void PeriodInit( )
+        public void PeriodInit( )
         {
             SetMinMaxPeriod();
             MinYear = GetYear(MinPeriod);
@@ -128,11 +128,11 @@ namespace em.Models
             MaxPeriod = Convert.ToInt32(dt.Rows[0].ItemArray[1].ToString());
         }
 
-        public static int DateTimeToInt(DateTime date)
+        private static int DateTimeToInt(DateTime date)
         {
             return date.Year * 100 + date.Month;
         }
-        public static string GetPeriodName(int period, MonthOutputStyle monthStyle = MonthOutputStyle.AsNumeric)
+        private static string GetPeriodName(int period, MonthOutputStyle monthStyle = MonthOutputStyle.AsNumeric)
         {
             int year = GetYear(period);
             int month = period - year * 100;
@@ -141,23 +141,23 @@ namespace em.Models
             else return year + " " + monthArray[month - 1];
         }
 
-        public static int PeriodMonthAdd(DateTime period, int month)
+        private static int PeriodMonthAdd(DateTime period, int month)
         {
             return DateTimeToInt(period.AddMonths(month));
 
         }
-        public static int PeriodMonthAdd(int period, int month)
+        private static int PeriodMonthAdd(int period, int month)
         {
             DateTime date = new DateTime(GetYear(period), GetMonth(period), 1);
             return DateTimeToInt(date.AddMonths(month));
 
         }
 
-        public static int DifferenceBetweenDatesInMonth(DateTime datestart, DateTime dateend)
+        private static int DifferenceBetweenDatesInMonth(DateTime datestart, DateTime dateend)
         {
             return ((dateend.Year - datestart.Year) * 12) + dateend.Month - datestart.Month;
         }
-        public static int DifferenceBetweenDatesInMonth(int datestart, int dateend)
+        private static int DifferenceBetweenDatesInMonth(int datestart, int dateend)
         {
             return ((GetYear(dateend) - GetYear(datestart)) * 12) + GetMonth(dateend) - GetMonth(datestart);
         }

@@ -19,85 +19,80 @@
         <vm:MainWindowViewModel />
     </Window.DataContext>
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="250"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
+        
         <Grid 
             HorizontalAlignment="Stretch" 
-            Grid.Row="1" 
+            Grid.Column="0" 
             Background="{StaticResource PrimaryHueMidBrush}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="50"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <Grid Grid.Row="0">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition />
-                    <ColumnDefinition Width="40" />
-                </Grid.ColumnDefinitions>
-                <Border 
-                    Grid.Column="0"
-                    BorderBrush="{StaticResource PrimaryHueLightBrush}" 
-                    BorderThickness="0,0,0,1">
-                    <StackPanel Orientation="Horizontal"
-                                HorizontalAlignment="Stretch">
-                        <Button HorizontalAlignment="Stretch"
-                                VerticalAlignment="Stretch"
-                                Margin="10,0,10,0"
-                                Width="190"
-                                HorizontalContentAlignment="Left"
-                                IsEnabled="{Binding IsFilterEnabled}">
-                            
-                                <StackPanel Orientation="Horizontal"
-                                            HorizontalAlignment="Left"
-                                            Margin="-10,0,0,0">
-                                    <materialDesign:PackIcon
-                                        Kind="FilterOutline"
-                                        Height="25"
-                                        Width="25"/>
-                                    <TextBlock HorizontalAlignment="Left"
-                                               Margin="10,0"
-                                               VerticalAlignment="Center"
-                                               Style="{StaticResource MaterialDesignBody1TextBlock}"
-                                               Foreground="WhiteSmoke"
-                                               Text="Фильтр" />
-                                </StackPanel>
-                        </Button>
-                    </StackPanel>
-                </Border>
-                <Border Grid.Column="1" BorderBrush="{StaticResource PrimaryHueLightBrush}" BorderThickness="0,0,1,1">
+            
+            <StackPanel Grid.Column="0"
+                        Orientation="Horizontal"
+                        IsEnabled="{Binding IsFilterEnabled}">
                 <StackPanel Orientation="Horizontal"
-                            VerticalAlignment="Stretch">
-                    <materialDesign:PopupBox Name="FilterPopup"
-                                             StaysOpen="True"
-                                             PlacementMode="RightAndAlignTopEdges"
-                                             HorizontalAlignment="Center"
-                                             VerticalAlignment="Center"
-                                             Foreground="WhiteSmoke"
-                                             IsPopupOpen="{Binding IsFilterPopupOpen}"
-                                             IsEnabled="{Binding IsFilterEnabled}">
-                            <StackPanel >
-                                <UserControl x:Name="FilterPanel"  Content="{Binding FilterPanelContent}"/>
-                            </StackPanel>
-                        </materialDesign:PopupBox>
+                            IsEnabled="{Binding IsFilterEnabled}">
+                        
+                    <materialDesign:PackIcon
+                        VerticalAlignment="Center"
+                        Foreground="WhiteSmoke"
+                        Kind="FilterOutline"
+                        Margin="15,0,0,0"
+                        Height="25"
+                        Width="25"/>
+                    <TextBlock Grid.Column="1"
+                                HorizontalAlignment="Left"
+                                Margin="12,0"
+                                VerticalAlignment="Center"
+                                Style="{StaticResource MaterialDesignBody1TextBlock}"
+                                Foreground="WhiteSmoke"
+                                Text="Фильтр" />
                 </StackPanel>
-                </Border>
-            </Grid>
-            <ScrollViewer 
-                HorizontalAlignment="Stretch" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" Grid.Row="1">
-                <UserControl x:Name="StackPanelMenu" Margin="10" Content="{Binding MyMainMenu}" />
+                <materialDesign:PopupBox Name="FilterPopup"
+                                            StaysOpen="True"
+                                            Margin="67,0,0,0"
+                                            PlacementMode="RightAndAlignTopEdges"
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            Foreground="WhiteSmoke"
+                                            PopupHorizontalOffset="30"
+                                            PopupVerticalOffset="40"
+                                            IsPopupOpen="{Binding IsFilterPopupOpen}"
+                                            IsEnabled="{Binding IsFilterEnabled}">
+                    <StackPanel >
+                        <UserControl x:Name="FilterPanel" 
+                                        Content="{Binding FilterPanelContent}"/>
+                    </StackPanel>
+                </materialDesign:PopupBox>
+                
+            </StackPanel>
+            
+            <ScrollViewer Grid.Row="1"
+                          HorizontalAlignment="Stretch" 
+                          HorizontalScrollBarVisibility="Disabled" 
+                          VerticalScrollBarVisibility="Auto" >
+                <StackPanel>
+                    <Border BorderBrush="DarkGray"
+                            BorderThickness="0,1,0,0" />
+                    <UserControl x:Name="StackPanelMenu" 
+                                 Margin="10" 
+                                 Content="{Binding MyMainMenu}" />
+                </StackPanel>
             </ScrollViewer>
         </Grid>
+        
+        
         <UserControl x:Name="MainFrame" 
-                     Grid.Row="1" 
                      Grid.Column="1" 
                      HorizontalAlignment="Stretch" 
                      VerticalAlignment="Stretch" 
                      Content="{Binding MainFrameContent}"/>
+        
     </Grid>
 </Window>

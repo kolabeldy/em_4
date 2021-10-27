@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace em.Models.Base
 {
     public interface IPeriod
     {
+        #region Properties
         int Id { get; set; }
         string Name { get; set; }
         string NameFull { get; set; }
@@ -18,29 +16,28 @@ namespace em.Models.Base
         DateTime SelectedEndDate { get; set; }
         int SelectedStartPeriod { get; set; }
         int SelectedEndPeriod { get; set; }
+        int MinSelectedPeriod { get; set; }
+        int MaxSelectedPeriod { get; set; }
+        int MinDynamicSelectedPeriod { get; set; }
+        int MaxDynamicSelectedPeriod { get; set; }
+        List<Period> Periods { get; set; }
+
+        #endregion
+
+        #region StaticProperties
         static int MinPeriod { get; set; }
         static int MaxPeriod { get; set; }
         static int MinYear { get; set; }
         static int MaxYear { get; set; }
         static int MinMonth { get; set; }
         static int MaxMonth { get; set; }
-        int MinSelectedPeriod { get; set; }
-        int MaxSelectedPeriod { get; set; }
-        int MinDynamicSelectedPeriod { get; set; }
-        int MaxDynamicSelectedPeriod { get; set; }
-        List<Period> Periods { get; set; }
+        #endregion
+
+        #region Methods
+        void PeriodInit();
         void SetDynamicPeriods();
 
+        #endregion
 
-        //static int GetYear(int period) => period / 100;
-        //static int GetMonth(int period) => period - GetYear(period) * 100;
-        //static string GetMonthName(int month) => monthArray[month - 1];
-        //static void PeriodInit();
-        //static int DateTimeToInt(DateTime date);
-        //static string GetPeriodName(int period, MonthOutputStyle monthStyle = MonthOutputStyle.AsNumeric);
-        //static int PeriodMonthAdd(DateTime period, int month);
-        //static int PeriodMonthAdd(int period, int month);
-        //static int DifferenceBetweenDatesInMonth(DateTime datestart, DateTime dateend);
-        //static int DifferenceBetweenDatesInMonth(int datestart, int dateend);
     }
 }

@@ -70,13 +70,9 @@ namespace em.ViewModels
 
         public MainWindowViewModel()
         {
-            Period.PeriodInit();
+            new Period().PeriodInit();
             MainMenuInit();
         }
-        //private void PeriodInit()
-        //{
-        //    Period.PeriodInit(201401, 202106);
-        //}
         private void FilterPanelClose()
         {
             IsClosePress = true;
